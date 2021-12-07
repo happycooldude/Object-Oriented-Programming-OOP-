@@ -29,49 +29,40 @@ class Pokemon
 
     public function attack($Attack, $target)
     {
-        if ($Attack->Name == 'Electric_Ring') {
-            echo 'Pikachu attacks Charmeleon using Electric_Ring!<br>';
-            $target->receiveDamage($this->EnergyType, $this->Attack1->Damage);
-        }
-        if ($Attack->Name == 'Pika_Punch') {
-            echo 'Pikachu attacks Charmeleon using Pika_Punch!<br>';
-            $target->receiveDamage($this->EnergyType, $this->Attack2->Damage);
-        }
-        if ($Attack->Name == 'Head_Butt') {
-            echo 'Charmeleon attacks Pikachu using Head_Butt!<br>';
-            $target->receiveDamage($this->EnergyType, $this->Attack1->Damage);
-        }
-        if ($Attack->Name == 'Flare') {
-            echo 'Charmeleon attacks Pikachu using Flare!<br>';
-            $target->receiveDamage($this->EnergyType, $this->Attack2->Damage);
-        }
+        echo $this->Name. ' attacks '. $target->Name. ' using ' . $Attack->Name . '!<br>';
+        $target->receiveDamage($this->EnergyType, $Attack->Damage);
     }
 
     public function receiveDamage($EnergyType, $damage)
     {
+        $actualDamage = $damage;
         if ($EnergyType == $this->Resistance->Type) {
-            $this->Health -= ($damage - $this->Resistance->Value);
-            if ($this->Health <= 0) {
-                $this->Health = 0;
-            }
-            echo $this->Name . ' takes ' . ($damage - $this->Resistance->Value) . ' damage<br>';
+            $actualDamage = ($damage - $this->Resistance->Value);
         } else if ($EnergyType == $this->Weakness->Type) {
-            $this->Health -= ($damage * $this->Weakness->Modifier);
-            if ($this->Health <= 0) {
-                $this->Health = 0;
-            }
-            echo $this->Name . ' takes ' . ($damage * $this->Weakness->Modifier) . ' damage<br>';
-        } else {
-            $this->Health -= ($damage);
-            if ($this->Health <= 0) {
-                $this->Health = 0;
-            }
-            echo $this->Name . ' takes ' . $damage . ' damage<br>';
+            $actualDamage = ($damage * $this->Weakness->Modifier);
         }
+        $this->Health -= $actualDamage;
+        echo $this->Name . ' takes ' . $actualDamage . ' damage<br>';
         if ($this->Health <= 0) {
+            $this->Health = 0;
             self::$counter--;
         }
         echo $this->Name . ' has ' . $this->Health . ' health left!';
+    }
+
+    public function getHealth()
+    {
+        return ($this->Health);
+    }
+
+    public function getAttack1()
+    {
+        return ($this->Attack1);
+    }
+
+    public function getAttack2()
+    {
+        return ($this->Attack2);
     }
 
     static function getPopulation()
