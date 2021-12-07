@@ -1,16 +1,21 @@
 <?php
 require 'Pokemon.php';
-require 'Pickachu.php';
+require 'Pikachu.php';
 require 'Charmeleon.php';
 require 'Attack.php';
 require 'Resistance.php';
 require 'Weakness.php';
 
-$Pickachu = new Pickachu();
+$Pikachu = new Pikachu();
 $Charmeleon = new Charmeleon();
 
-print_r('<pre>' . $Pickachu . '</pre>');
+// echo $Charmeleon->Health - ($Pikachu->Attack1->Damage - $Charmeleon->Resistance->Value), '<br>';
+// echo $Pikachu->Health - ($Charmeleon->Attack2->Damage * $Pikachu->Weakness->Modifier), '<br><br>';
 
-echo $Pickachu->Name;
 
-print_r('<pre>' . $Charmeleon  . '</pre>');
+$Pikachu->attack($Pikachu->getAttack1(), $Charmeleon);
+echo '<br><br><br>Charmeleon health ', $Charmeleon->getHealth(), '<br>';
+echo 'Charmeleon '.$Charmeleon. '<br>';
+echo 'Pikachu '.$Pikachu. '<br>';
+
+// echo 'The number of pokemons = ', Pokemon::$counter;
