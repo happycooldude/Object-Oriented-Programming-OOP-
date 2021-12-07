@@ -39,12 +39,10 @@ class Pokemon
         }
         if ($Attack->Name == 'Head_Butt') {
             echo 'Charmeleon attacks Pikachu using Head_Butt!<br>';
-
             $target->receiveDamage($this->EnergyType, $this->Attack1->Damage);
         }
         if ($Attack->Name == 'Flare') {
             echo 'Charmeleon attacks Pikachu using Flare!<br>';
-
             $target->receiveDamage($this->EnergyType, $this->Attack2->Damage);
         }
     }
@@ -53,21 +51,27 @@ class Pokemon
     {
         if ($EnergyType == $this->Resistance->Type) {
             $this->Health -= ($damage - $this->Resistance->Value);
+            if ($this->Health <= 0) {
+                $this->Health = 0;
+            }
             echo $this->Name . ' takes ' . ($damage - $this->Resistance->Value) . ' damage<br>';
-            echo $this->Name . ' has ' . $this->Health . ' health left!';
-
         } else if ($EnergyType == $this->Weakness->Type) {
             $this->Health -= ($damage * $this->Weakness->Modifier);
+            if ($this->Health <= 0) {
+                $this->Health = 0;
+            }
             echo $this->Name . ' takes ' . ($damage * $this->Weakness->Modifier) . ' damage<br>';
-            echo $this->Name . ' has ' . $this->Health . ' health left!';
         } else {
             $this->Health -= ($damage);
+            if ($this->Health <= 0) {
+                $this->Health = 0;
+            }
             echo $this->Name . ' takes ' . $damage . ' damage<br>';
         }
-        if($this->Health <= 0){
-            unset($target);
-            self::$counter --;
+        if ($this->Health <= 0) {
+            self::$counter--;
         }
+        echo $this->Name . ' has ' . $this->Health . ' health left!';
     }
 
     static function getPopulation()

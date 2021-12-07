@@ -15,15 +15,18 @@ class Pikachu extends Pokemon
         parent::__construct($Name, $EnergyType, $Hitpoints, $Health, $Attack1, $Attack2, $Weakness, $Resistance);
     }
 
-    public function getHealth(){
-        return($this->Health);
+    public function getHealth()
+    {
+        return ($this->Health);
     }
 
-    public function getAttack1(){
-        return($this->Attack1);
+    public function getAttack1()
+    {
+        return ($this->Attack1);
     }
-    
-    public function getAttack2(){
-        return($this->Attack2);
+
+    public function getAttack2()
+    {
+        return ($this->Attack2);
     }
 }
