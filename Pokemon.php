@@ -11,7 +11,7 @@ class Pokemon
     protected $Weakness;
     protected $Resistance;
 
-    public static $counter = 0;
+    protected static $counter = 0;
 
     public function __construct($Name, $EnergyType, $Hitpoints, $Health, $Attack1, $Attack2, $Weakness, $Resistance)
     {
@@ -46,10 +46,6 @@ class Pokemon
             echo 'Charmeleon attacks Pikachu using Flare!<br>';
 
             $target->receiveDamage($this->EnergyType, $this->Attack2->Damage);
-            if($target->Health <= 0){
-                unset($target);
-                self::$counter --;
-            }
         }
     }
 
@@ -59,6 +55,7 @@ class Pokemon
             $this->Health -= ($damage - $this->Resistance->Value);
             echo $this->Name . ' takes ' . ($damage - $this->Resistance->Value) . ' damage<br>';
             echo $this->Name . ' has ' . $this->Health . ' health left!';
+
         } else if ($EnergyType == $this->Weakness->Type) {
             $this->Health -= ($damage * $this->Weakness->Modifier);
             echo $this->Name . ' takes ' . ($damage * $this->Weakness->Modifier) . ' damage<br>';
@@ -67,11 +64,15 @@ class Pokemon
             $this->Health -= ($damage);
             echo $this->Name . ' takes ' . $damage . ' damage<br>';
         }
+        if($this->Health <= 0){
+            unset($target);
+            self::$counter --;
+        }
     }
 
-    public function getPopulation($counter)
+    static function getPopulation()
     {
-        return $counter;
+        return self::$counter;
     }
 
     public function __toString()
