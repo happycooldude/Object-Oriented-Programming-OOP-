@@ -11,12 +11,16 @@ class Charmeleon extends Pokemon
         $Attack1 = new Attack('Head_Butt', 10);
         $Attack2 = new Attack('Flare', 30);
         $Weakness = new Weakness('Water', 2);
-        $Resistance = new Resistance('Lightning', 10);
+        $Resistance = new Resistance('Electric', 10);
         parent::__construct($Name, $EnergyType, $Hitpoints, $Health, $Attack1, $Attack2, $Weakness, $Resistance);
     }
 
     public function getHealth(){
         return($this->Health);
+    }
+
+    public function getCharmeleon(){
+        return($this);
     }
 
     public function getAttack1(){

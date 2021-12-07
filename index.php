@@ -9,13 +9,12 @@ require 'Weakness.php';
 $Pikachu = new Pikachu();
 $Charmeleon = new Charmeleon();
 
-// echo $Charmeleon->Health - ($Pikachu->Attack1->Damage - $Charmeleon->Resistance->Value), '<br>';
-// echo $Pikachu->Health - ($Charmeleon->Attack2->Damage * $Pikachu->Weakness->Modifier), '<br><br>';
-
-
-$Pikachu->attack($Pikachu->getAttack1(), $Charmeleon);
+$Pikachu->attack($Pikachu->getAttack2(), $Charmeleon);
+echo '<br><br><br>';
+$Charmeleon->attack($Charmeleon->getAttack2(), $Pikachu);
+$Charmeleon->attack($Charmeleon->getAttack2(), $Pikachu);
+echo '<br><br><br>';
 echo '<br><br><br>Charmeleon health ', $Charmeleon->getHealth(), '<br>';
-echo 'Charmeleon '.$Charmeleon. '<br>';
-echo 'Pikachu '.$Pikachu. '<br>';
+echo '<br><br><br>Pikachu health ', $Pikachu->getHealth(), '<br>';
 
-// echo 'The number of pokemons = ', Pokemon::$counter;
+echo '<br><br>The number of pokemons = ', getPopulation();

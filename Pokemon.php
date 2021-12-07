@@ -29,16 +29,27 @@ class Pokemon
 
     public function attack($Attack, $target)
     {
-        echo "De Attack = ". $Attack. "<br>";
-        echo "De target = ". $target. "<br>";
-
         if ($Attack->Name == 'Electric_Ring') {
-            $target->receiveDamage($this->EnergyType, $this->Attack->Damage);
-            echo '<br>De attack if statement = Electric_Ring';
+            echo 'Pikachu attacks Charmeleon using Electric_Ring!<br>';
+            $target->receiveDamage($this->EnergyType, $this->Attack1->Damage);
         }
         if ($Attack->Name == 'Pika_Punch') {
-            $target->receiveDamage($this->EnergyType, $this->Attack->Damage);
-            echo '<br>De attack if statement = Pika_Punch';
+            echo 'Pikachu attacks Charmeleon using Pika_Punch!<br>';
+            $target->receiveDamage($this->EnergyType, $this->Attack2->Damage);
+        }
+        if ($Attack->Name == 'Head_Butt') {
+            echo 'Charmeleon attacks Pikachu using Head_Butt!<br>';
+
+            $target->receiveDamage($this->EnergyType, $this->Attack1->Damage);
+        }
+        if ($Attack->Name == 'Flare') {
+            echo 'Charmeleon attacks Pikachu using Flare!<br>';
+
+            $target->receiveDamage($this->EnergyType, $this->Attack2->Damage);
+            if($target->Health <= 0){
+                unset($target);
+                self::$counter --;
+            }
         }
     }
 
@@ -46,10 +57,21 @@ class Pokemon
     {
         if ($EnergyType == $this->Resistance->Type) {
             $this->Health -= ($damage - $this->Resistance->Value);
-        }
-        if ($EnergyType == $this->Weakness->Type) {
+            echo $this->Name . ' takes ' . ($damage - $this->Resistance->Value) . ' damage<br>';
+            echo $this->Name . ' has ' . $this->Health . ' health left!';
+        } else if ($EnergyType == $this->Weakness->Type) {
             $this->Health -= ($damage * $this->Weakness->Modifier);
+            echo $this->Name . ' takes ' . ($damage * $this->Weakness->Modifier) . ' damage<br>';
+            echo $this->Name . ' has ' . $this->Health . ' health left!';
+        } else {
+            $this->Health -= ($damage);
+            echo $this->Name . ' takes ' . $damage . ' damage<br>';
         }
+    }
+
+    public function getPopulation($counter)
+    {
+        return $counter;
     }
 
     public function __toString()

@@ -15,4 +15,14 @@ class Attack
     {
         return json_encode($this);
     }
+
+    public function getDamage($Damage)
+    {
+        return $Damage;
+    }
+
+    public function getName($Name)
+    {
+        return $Name;
+    }
 }
