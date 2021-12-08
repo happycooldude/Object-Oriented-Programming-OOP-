@@ -9,13 +9,15 @@ require 'Weakness.php';
 $Pikachu = new Pikachu();
 $Charmeleon = new Charmeleon();
 
-$Pikachu->attack($Pikachu->getAttack1(), $Charmeleon);
+$Pikachu->attack(1, $Charmeleon);
 echo '<br><br>';
-$Pikachu->attack($Pikachu->getAttack2(), $Charmeleon);
+$Pikachu->attack(0, $Charmeleon);
 echo '<br><br>';
-$Charmeleon->attack($Charmeleon->getAttack1(), $Pikachu);
+$Charmeleon->attack(1, $Pikachu);
 echo '<br><br>';
-$Charmeleon->attack($Charmeleon->getAttack2(), $Pikachu);
+$Charmeleon->attack(0, $Pikachu);
 echo '<br><br>';
+
+
 
 echo '<br><br>The number of pokemons = ' . Pokemon::getPopulation();
