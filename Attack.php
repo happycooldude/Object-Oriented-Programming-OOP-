@@ -5,10 +5,11 @@ class Attack
     public $Name;
     public $Damage;
 
-    public function __construct($Name, $Damage)
+    public function __construct($Name, $Damage, $Type)
     {
         $this->Name = $Name;
         $this->Damage = $Damage;
+        $this->Type = $Type;
     }
 
     public function __toString()
