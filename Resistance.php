@@ -10,9 +10,4 @@ class Resistance
         $this->Type = $Type;
         $this->Value = $Value;
     }
-
-    public function __toString()
-    {
-        return json_encode($this);
-    }
 }

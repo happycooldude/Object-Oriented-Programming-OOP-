@@ -12,11 +12,6 @@ class Attack
         $this->Type = $Type;
     }
 
-    public function __toString()
-    {
-        return json_encode($this);
-    }
-
     public function getDamage($Damage)
     {
         return $Damage;

@@ -6,12 +6,12 @@ $Charmeleon = new Charmeleon();
 
 $Pikachu->attack(0, $Charmeleon);
 echo '<br><br>';
-$Pikachu->attack(1, $Charmeleon);
-echo '<br><br>';
-$Charmeleon->attack(0, $Pikachu);
-echo '<br><br>';
 $Charmeleon->attack(1, $Pikachu);
 echo '<br><br>';
+$Pikachu->attack(1, $Charmeleon);
+echo '<br><br>';
+// $Charmeleon->attack(0, $Pikachu);
+// echo '<br><br>';
 
 
 

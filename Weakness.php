@@ -10,9 +10,4 @@ class Weakness
         $this->Type = $Type;
         $this->Modifier = $Modifier;
     }
-
-    public function __toString()
-    {
-        return json_encode($this);
-    }
 }

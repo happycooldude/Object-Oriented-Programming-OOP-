@@ -37,7 +37,7 @@ class Pokemon
 
     public function receiveDamage($EnergyType, $damage)
     {
-        //Zet de damage in een variable $actualDamaga waar de totale schade berekend wordt,
+        //Zet de damage in een variable $actualDamage waar de totale schade berekend wordt,
         //om die vervolgens van de health van de pokemon te halen.
         $actualDamage = $damage;
 
@@ -70,10 +70,5 @@ class Pokemon
     static function getPopulation()
     {
         return self::$counter;
-    }
-
-    public function __toString()
-    {
-        return json_encode($this);
     }
 }
